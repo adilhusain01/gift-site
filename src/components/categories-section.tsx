@@ -2,7 +2,6 @@
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
 import { Search } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useStore } from '@/lib/store';
@@ -12,7 +11,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 
 export function CategoriesSection() {
-  const { selectedCategory, setSelectedCategory, searchQuery, setSearchQuery } = useStore();
+  const { selectedCategory, setSelectedCategory } = useStore();
   const [categorySearchQuery, setCategorySearchQuery] = useState('');
   
   // Get products for current category with search
@@ -49,7 +48,7 @@ export function CategoriesSection() {
           transition={{ delay: 0.2 }}
           className="flex flex-wrap justify-center gap-2 mb-8"
         >
-          {CATEGORIES.map((category, index) => (
+          {CATEGORIES.map((category) => (
             <motion.div
               key={category.id}
               whileHover={{ scale: 1.05 }}
@@ -57,7 +56,7 @@ export function CategoriesSection() {
             >
               <Button
                 variant={selectedCategory === category.id ? 'default' : 'outline'}
-                onClick={() => setSelectedCategory(category.id as any)}
+                onClick={() => setSelectedCategory(category.id as 'all' | 'her' | 'him' | 'couple' | 'parents' | 'kids')}
                 className="flex items-center gap-2 h-12"
               >
                 <div className="relative w-6 h-6 rounded-full overflow-hidden">

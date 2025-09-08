@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Heart, ShoppingCart, Trash2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useStore } from '@/lib/store';
+import { useStore, Product } from '@/lib/store';
 import Image from 'next/image';
 import { useState } from 'react';
 
@@ -19,7 +19,7 @@ export function WishlistDrawer() {
   const { wishlist, removeFromWishlist, addToCart } = useStore();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleAddToCart = (product: any) => {
+  const handleAddToCart = (product: Product) => {
     addToCart(product);
   };
 
