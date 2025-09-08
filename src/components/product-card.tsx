@@ -47,7 +47,7 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
       <Card className="h-full overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md">
         <div className="relative overflow-hidden">
           {/* Image */}
-          <div className="relative h-64 bg-muted">
+          <div className="relative h-48 sm:h-56 md:h-64 bg-muted">
             {isImageLoading && (
               <div className="absolute inset-0 bg-muted animate-pulse" />
             )}
@@ -62,49 +62,49 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
             />
           </div>
 
-          {/* Overlay Actions */}
+          {/* Overlay Actions - Always visible on mobile, hover on desktop */}
           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300">
-            <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="absolute top-2 sm:top-3 right-2 sm:right-3 flex flex-col gap-1.5 sm:gap-2 opacity-100 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <Button
                 size="icon"
                 variant="secondary"
                 onClick={handleWishlistToggle}
-                className="h-8 w-8 rounded-full shadow-lg"
+                className="h-7 w-7 sm:h-8 sm:w-8 rounded-full shadow-lg"
               >
                 <Heart 
-                  className={`h-4 w-4 ${isWishlisted ? 'fill-red-500 text-red-500' : ''}`} 
+                  className={`h-3 w-3 sm:h-4 sm:w-4 ${isWishlisted ? 'fill-red-500 text-red-500' : ''}`} 
                 />
               </Button>
               <Button
                 size="icon"
                 variant="secondary"
                 onClick={handleProductView}
-                className="h-8 w-8 rounded-full shadow-lg"
+                className="h-7 w-7 sm:h-8 sm:w-8 rounded-full shadow-lg"
               >
-                <Eye className="h-4 w-4" />
+                <Eye className="h-3 w-3 sm:h-4 sm:w-4" />
               </Button>
             </div>
           </div>
 
           {/* Price Badge */}
-          <div className="absolute bottom-3 left-3">
-            <div className="bg-primary text-primary-foreground px-3 py-1 rounded-full text-sm font-semibold">
+          <div className="absolute bottom-2 sm:bottom-3 left-2 sm:left-3">
+            <div className="bg-primary text-primary-foreground px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm font-semibold">
               ₹ {product.price.toLocaleString()}
             </div>
           </div>
         </div>
 
-        <CardContent className="p-4">
-          <h3 className="font-semibold text-lg mb-2 line-clamp-2 min-h-[3.5rem]">
+        <CardContent className="p-3 sm:p-4">
+          <h3 className="font-semibold text-base sm:text-lg mb-2 sm:mb-3 line-clamp-2 min-h-[2.5rem] sm:min-h-[3.5rem]">
             {product.name}
           </h3>
           
           <Button 
             onClick={handleAddToCart}
-            className="w-full group/button"
+            className="w-full group/button text-xs sm:text-sm"
             size="sm"
           >
-            <ShoppingCart className="h-4 w-4 mr-2 group-hover/button:animate-bounce" />
+            <ShoppingCart className="h-3 w-3 sm:h-4 sm:w-4 mr-1.5 sm:mr-2 group-hover/button:animate-bounce" />
             Add to Cart
           </Button>
         </CardContent>

@@ -93,7 +93,7 @@ Please confirm this order. Thank you!`;
         </Button>
       </DialogTrigger>
       
-      <DialogContent className="max-w-md max-h-[90vh] overflow-hidden flex flex-col">
+      <DialogContent className="max-w-md w-[95vw] sm:w-full max-h-[90vh] overflow-hidden flex flex-col mx-4">
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <ShoppingCart className="h-5 w-5" />
@@ -110,7 +110,7 @@ Please confirm this order. Thank you!`;
         <div className="flex-1 overflow-hidden">
           {!showCheckout ? (
             // Cart Items
-            <div className="space-y-4 overflow-y-auto max-h-96 pr-2">
+            <div className="space-y-3 sm:space-y-4 overflow-y-auto max-h-80 sm:max-h-96 pr-2">
               <AnimatePresence>
                 {cart.map((item) => (
                   <motion.div
@@ -118,9 +118,9 @@ Please confirm this order. Thank you!`;
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0, x: 20 }}
-                    className="flex items-center gap-3 p-3 border rounded-lg"
+                    className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 border rounded-lg"
                   >
-                    <div className="relative w-16 h-16 rounded-md overflow-hidden">
+                    <div className="relative w-12 h-12 sm:w-16 sm:h-16 rounded-md overflow-hidden flex-shrink-0">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -130,44 +130,44 @@ Please confirm this order. Thank you!`;
                     </div>
                     
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-medium text-sm line-clamp-2">
+                      <h4 className="font-medium text-xs sm:text-sm line-clamp-2">
                         {item.name}
                       </h4>
-                      <p className="text-primary font-semibold">
+                      <p className="text-primary font-semibold text-sm">
                         ₹{item.price.toLocaleString()}
                       </p>
                     </div>
                     
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
                       <Button
                         size="icon"
                         variant="outline"
-                        className="h-8 w-8"
+                        className="h-7 w-7 sm:h-8 sm:w-8"
                         onClick={() => handleQuantityChange(item.id, item.quantity - 1)}
                       >
-                        <Minus className="h-3 w-3" />
+                        <Minus className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                       </Button>
                       
-                      <span className="w-8 text-center font-medium">
+                      <span className="w-6 sm:w-8 text-center font-medium text-sm">
                         {item.quantity}
                       </span>
                       
                       <Button
                         size="icon"
                         variant="outline"
-                        className="h-8 w-8"
+                        className="h-7 w-7 sm:h-8 sm:w-8"
                         onClick={() => handleQuantityChange(item.id, item.quantity + 1)}
                       >
-                        <Plus className="h-3 w-3" />
+                        <Plus className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                       </Button>
                       
                       <Button
                         size="icon"
                         variant="ghost"
-                        className="h-8 w-8 text-red-500 hover:text-red-600 hover:bg-red-50"
+                        className="h-7 w-7 sm:h-8 sm:w-8 text-red-500 hover:text-red-600 hover:bg-red-50"
                         onClick={() => removeFromCart(item.id)}
                       >
-                        <Trash2 className="h-3 w-3" />
+                        <Trash2 className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
                       </Button>
                     </div>
                   </motion.div>
@@ -183,31 +183,34 @@ Please confirm this order. Thank you!`;
             </div>
           ) : (
             // Checkout Form
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-medium mb-2">Name *</label>
+                <label className="block text-sm font-medium mb-1.5 sm:mb-2">Name *</label>
                 <Input
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder="Enter your full name"
+                  className="h-10 sm:h-11"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Delivery Address *</label>
+                <label className="block text-sm font-medium mb-1.5 sm:mb-2">Delivery Address *</label>
                 <Input
                   value={formData.address}
                   onChange={(e) => setFormData({ ...formData, address: e.target.value })}
                   placeholder="Enter your complete address"
+                  className="h-10 sm:h-11"
                 />
               </div>
               
               <div>
-                <label className="block text-sm font-medium mb-2">Phone Number</label>
+                <label className="block text-sm font-medium mb-1.5 sm:mb-2">Phone Number</label>
                 <Input
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder="Enter your phone number"
+                  className="h-10 sm:h-11"
                 />
               </div>
             </div>
@@ -215,8 +218,8 @@ Please confirm this order. Thank you!`;
         </div>
 
         {cart.length > 0 && (
-          <div className="border-t pt-4 mt-4">
-            <div className="flex justify-between items-center text-lg font-semibold mb-4">
+          <div className="border-t pt-3 sm:pt-4 mt-3 sm:mt-4">
+            <div className="flex justify-between items-center text-base sm:text-lg font-semibold mb-3 sm:mb-4">
               <span>Total:</span>
               <span>₹{total.toLocaleString()}</span>
             </div>
@@ -224,7 +227,7 @@ Please confirm this order. Thank you!`;
             {!showCheckout ? (
               <Button 
                 onClick={() => setShowCheckout(true)}
-                className="w-full"
+                className="w-full h-10 sm:h-11"
                 size="lg"
               >
                 Proceed to Checkout
@@ -234,13 +237,15 @@ Please confirm this order. Thank you!`;
                 <Button 
                   variant="outline" 
                   onClick={() => setShowCheckout(false)}
-                  className="flex-1"
+                  className="flex-1 h-10 sm:h-11"
+                  size="sm"
                 >
                   Back to Cart
                 </Button>
                 <Button 
                   onClick={handleCheckout}
-                  className="flex-1"
+                  className="flex-1 h-10 sm:h-11"
+                  size="sm"
                 >
                   Place Order
                 </Button>
