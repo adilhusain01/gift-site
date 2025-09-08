@@ -67,8 +67,8 @@ export function CategoriesSection() {
                     className="object-cover"
                   />
                 </div>
-                <span className="hidden xs:inline">{category.name}</span>
-                <span className="xs:hidden">{category.name.split(' ')[0]}</span>
+                <span className="hidden sm:inline">{category.name}</span>
+                <span className="sm:hidden">{category.name.split(' ')[0]}</span>
               </Button>
             </motion.div>
           ))}
