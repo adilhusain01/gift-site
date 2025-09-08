@@ -65,13 +65,7 @@ export function HeroSection() {
             <ArrowRight className="ml-2 h-4 w-4 sm:h-5 sm:w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           
-          <Button 
-            variant="outline" 
-            size="lg"
-            className="w-full sm:w-auto border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-4 sm:py-6 text-base sm:text-lg font-semibold"
-          >
-            View Categories
-          </Button>
+
         </motion.div>
       </div>
     </section>
