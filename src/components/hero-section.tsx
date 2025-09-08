@@ -73,40 +73,6 @@ export function HeroSection() {
             View Categories
           </Button>
         </motion.div>
-
-        {/* Floating Elements */}
-        <motion.div
-          animate={{
-            y: [0, -10, 0],
-          }}
-          transition={{
-            duration: 3,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-          className="absolute top-20 left-10 hidden lg:block"
-        >
-          <div className="w-16 h-16 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Sparkles className="h-8 w-8 text-yellow-400" />
-          </div>
-        </motion.div>
-
-        <motion.div
-          animate={{
-            y: [0, 10, 0],
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 1,
-          }}
-          className="absolute bottom-20 right-10 hidden lg:block"
-        >
-          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Sparkles className="h-6 w-6 text-orange-400" />
-          </div>
-        </motion.div>
       </div>
     </section>
   );
